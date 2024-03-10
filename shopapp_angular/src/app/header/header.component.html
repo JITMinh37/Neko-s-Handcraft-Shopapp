@@ -1,0 +1,51 @@
+<header>
+  <nav class="navbar custom-navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container-fluid">
+        <!-- Logo -->
+        <a class="navbar-brand" href="#">
+          <img src="assets/image/Logo.png" alt="Your Logo">
+        </a>
+  
+        <!-- Category Select -->
+        <div class="dropdown" (clickOutside)="onOutsideClick($event)">
+          <button class="btn transparent-btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="toggleDropdown()">
+            <span class="btn-icon">
+              <i class="fa-solid fa-bars"></i>
+            </span>
+            Categories
+          </button>
+          <div id="myDropdown" class="dropdown-menu" [class.show-dropdown]="showDropdown" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Gifts</a>
+            <a class="dropdown-item" href="#">Flowers</a>
+            <a class="dropdown-item" href="#">Decorations</a>
+            <a class="dropdown-item" href="#">Jewelry</a>
+            <a class="dropdown-item" href="#">Utensils</a>
+            <a class="dropdown-item" href="#">Bamboo utensils</a>                   
+          </div>
+        </div>
+  
+        <!-- Search Input -->
+        <div class="search-container">
+          <input  type="text" class="search-input" placeholder="Search for anything" [(ngModel)]="inputText"/>
+          @if (inputText != '') {
+            <div class="clear-icon" (click)="clearInput()">
+              <i class="fa-solid fa-x"></i>
+            </div>
+          }
+          <div class="search-icon">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+        </div>
+  
+        <!-- Đăng nhập Button -->
+        <button class="btn transparent-btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="showSignIn()">Sign in</button>
+  
+        <!-- Đơn hàng Icon -->
+        <div class="d-flex align-items-center cart-icon">
+          <i class="fa-solid fa-cart-shopping"></i>
+        </div>
+      </div>
+  </nav>
+</header>
+
+

@@ -1,0 +1,142 @@
+@if(showSignIn){
+  <app-sign-in (closeSignInChange)="onCloseSignIn($event)" (showRegisterChange)="onShowRegister($event)"></app-sign-in>
+  <div class = "overlay1"></div>
+}
+
+@if(showRegister){
+  <app-register (closeRegisterChange)="onCloseRegister($event)" ></app-register>
+  <div class = "overlay1"></div>
+}
+
+  <app-header (showOverlayChange) = "onShowOverlayChange($event)" 
+(showSignInChange)="onShowSignInChange($event)"></app-header>
+<div [class.overlay]="showOverlay"></div>
+
+
+  <div class = "container">
+    <div class = "intro-section">
+      <h2>Welcome to Neko's Handcrafts - tap into the art of craftsmanship</h2>
+    </div>
+  </div>
+  <!-- List Categories -->
+  <div class="container listcategory">
+    <ul>
+      <li>
+        <a href="">
+          <img src="assets/image/gif.jpg" alt="Image 1">
+          <p>Gifts</p>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="assets/image/hoa.png" alt="Image 2">
+          <p>Flowers</p>
+        </a>
+      </li>
+      <li>
+        <a href="">
+          <img src="assets/image/decor.png" alt="Image 3">
+          <p>Decorations</p>
+        </a>
+      </li>
+      <li>
+        <a href="">
+          <img src="assets/image/trangsuc.jpg" alt="Image 4">
+          <p>Jewelry</p>
+        </a>
+      </li>
+      <li>
+        <a href="">
+          <img src="assets/image/dodung.jpg" alt="Image 5">
+          <p>Utensils</p>
+        </a>
+      </li>
+      <li>
+        <a href="">
+          <img src="assets/image/tre.png" alt="Image 6">
+          <p>Bamboo utensils</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="space"></div>
+  <div class="popular_category">
+    <div class="header">
+      <h2>Shop our popular gift categories</h2>
+    </div>
+    <div class="list-container">
+      <ul>
+        <li>
+          <a href="#">
+            <img src="assets/image/giftkyniem.jpg" alt="gift for kyniem">
+            <p>Commemorative gifts</p>
+          </a>
+        </li>
+        
+        <li>
+          <a href="#">
+            <img src="assets/image/gifforman.png" alt="gift for him">
+            <p>Gifts for men</p>
+          </a>
+        </li>
+  
+        <li>
+          <a href="#">
+            <img src="assets/image/gifforgirl.jpg" alt="gift for her">
+            <p>Gifts for women</p>
+          </a>
+        </li>
+  
+        <li>
+          <a href="#">
+            <img src="assets/image/giftforholiday.jpg" alt="gift for holiday">
+            <p>Holiday gifts</p>
+          </a>
+        </li>
+  
+        <li>
+          <a href="#">
+            <img src="assets/image/giftforwedding.png" alt="gift for wedding">
+            <p>Wedding gifts</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="space1"></div>
+  
+  <div class="Intro_Neko">
+    <div class="title">
+      <h2>What is Neko's Handcrafts?</h2>
+    </div>
+  
+    <div class="content">
+      <div class="main_content">
+        <h3>A good community to operate in</h3>
+        <p>Neko's Handcrafts is an online marketplace for handmade arts and crafts, where people come together to produce, buy, sell, and collect unique items. We are also a community driving positive change for small businesses, individuals, and organizations.</p>
+      </div>
+  
+      <div class="main_content">
+        <h3>Independent creativity</h3>
+        <p>We simply provide the materials, and everyone gets to create and sell what they love. We make the entire process easy, helping you connect directly with manufacturers.</p>
+      </div>
+  
+      <div class="main_content">
+        <h3>Peace of mind</h3>
+        <p>Your privacy is our top priority for our dedicated team, and if you need assistance, we are always ready to help.</p>
+      </div>
+    </div>
+  
+    <div class="ket">
+      <h4>Do you have any questions? We are ready with answers.</h4>
+      <a href="#">
+        <input type="button" value="Go to Help Center">
+      </a>
+    </div>
+  </div>
+
+
+<app-footer></app-footer>
+
+  
+

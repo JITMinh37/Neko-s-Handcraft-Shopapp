@@ -1,0 +1,259 @@
+body{
+  overflow-y: auto;
+}
+
+.container{
+  text-align: center;
+}
+.intro-section{
+  margin-top: 80px;
+  padding: 18px;
+}
+.intro-section h2{
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 100;
+  font-size: 31.01px;
+  line-height: 1.1;
+  font-family: "Guardian-EgypTT","Charter","Charter Bitstream","Cambria","Noto Serif Light","Droid Serif","Georgia","serif";
+  letter-spacing: .46515px;
+}
+.listcategory{
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+
+.listcategory ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.listcategory li {
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+  position: relative;
+}
+
+.listcategory li:hover img {
+      transform: scale(1.1);
+    }
+
+.listcategory a {
+  text-decoration: none;
+  color: black;
+}
+
+.listcategory img {
+  border-radius: 50%;
+  width: 114px; /* Điều chỉnh kích thước ảnh theo ý bạn */
+  height: 114px; /* Điều chỉnh kích thước ảnh theo ý bạn */
+  object-fit: cover;
+  margin-bottom: 12px;
+  margin-top: 12px;
+  transition: transform 0.2s, filter 0.2s;
+}
+.listcategory li:hover p {
+  opacity: 0.85;
+}
+.listcategory li::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 2px;
+  background-color: transparent;
+  transition: background-color 0.2s; /* Hiệu ứng màu nền (border-bottom) */
+}
+
+.listcategory li:hover::before {
+  background-color: black; /* Màu nền (border-bottom) khi hover */
+}
+.listcategory li a p{
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: .08px;
+  color: rgb(0, 0, 0);
+  margin-bottom: 6px;
+}
+
+.space{
+  padding-bottom: 60px !important;
+}
+
+.popular_category{
+  margin-left: 36px;
+  margin-right: 36px;
+}
+
+.popular_category .header {
+  text-align: left;
+  margin-bottom: 10px;
+  margin-left: 9px;
+  font-family: "Graphik Webfont","-apple-system","Helvetica Neue","Droid Sans","Arial","sans-serif";
+  font-weight: 500;
+  font-size: 27.01px;
+  line-height: 1.3;
+  letter-spacing: .13505px;
+}
+
+
+
+.popular_category ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.popular_category li {
+  width: 240px;
+  height: 270px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+  position: relative;
+  border: 1px solid #ddd; /* Đường viền bo ngoài */
+  border-radius: 0.9em; /* Bo góc */
+  overflow: hidden; /* Ngăn chặn nội dung tràn ra khỏi khung */
+  margin: 9px;
+}
+
+.popular_category li:hover{
+  box-shadow: 0 8px 6px rgba(0, 0, 0, 0.1), 0 6px 15px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.2s; /* Hiệu ứng mờ */
+}
+
+
+
+.popular_category a {
+  text-decoration: none;
+  color: black;
+  display: block;
+}
+
+.popular_category img {
+  width: 100%; /* Điều chỉnh kích thước ảnh theo ý bạn */
+  height: 205px; /* Điều chỉnh kích thước ảnh theo ý bạn */
+  object-fit: cover;
+  margin-bottom: 8px; /* Khoảng cách giữa ảnh và văn bản mô tả */
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.popular_category p {
+  margin: 0;
+  padding: 12px;
+  font-family: "Graphik Webfont","-apple-system","Helvetica Neue","Droid Sans","Arial","sans-serif";
+  font-weight: 500;
+  font-size: 19.01px;
+  line-height: 1.4;
+  letter-spacing: .09505px;
+}
+
+.space1{
+  padding-bottom: 70px;
+}
+
+.Intro_Neko {
+  text-align: center;
+  padding: 20px; /* Khoảng cách giữa nội dung và mép của trang */
+  background-color: #fdebd2;
+  padding-bottom: 72px;
+}
+
+.title {
+  margin-bottom: 36px; /* Khoảng cách giữa title và content */
+  padding-top: 48px;
+}
+
+.title h2 {
+  font-size: 42px; /* Điều chỉnh kích thước font của title */
+  font-weight: 100;
+  line-height: 1.1;
+  letter-spacing: 0px;
+}
+
+.content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.main_content {
+  width: 30%; /* Điều chỉnh chiều rộng của mỗi main_content */
+  margin-bottom: 20px; /* Khoảng cách giữa các main_content */
+}
+.main_content h3,
+.main_content p {
+  text-align: left; /* Lùi vào lề trái */
+}
+
+.main_content h3 {
+  font-family: "Graphik Webfont","-apple-system","Helvetica Neue","Droid Sans","Arial","sans-serif";
+  font-weight: 500;
+  font-size: 27.01px;
+  line-height: 1.3;
+  letter-spacing: .13505px;
+}
+.main_content p{
+  font-family: "Graphik Webfont","-apple-system","Helvetica Neue","Droid Sans","Arial","sans-serif";
+  font-weight: 400;
+  font-size: 16px;
+    line-height: 1.7;
+    letter-spacing: .16px;
+}
+.ket {
+  margin-top: 20px; /* Khoảng cách giữa content và ket */
+}
+
+.ket h4 {
+  font-family: "Graphik Webfont","-apple-system","Helvetica Neue","Droid Sans","Arial","sans-serif";
+  font-weight: 500;
+    font-size: 19.01px;
+    line-height: 1.4;
+    letter-spacing: .09505px;
+}
+.ket a{
+  margin-top: 12px;
+  display: inline-block;
+}
+.ket a input{
+  padding: 12px 18px 12px 18px;
+  background-color: #fdebd2;
+  border-radius: 25px; /* Điều chỉnh giá trị border-radius */
+  cursor: pointer; /* Biến con trỏ thành bàn tay khi hover */
+  outline: none;
+  font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    text-align: center;
+    vertical-align: middle;
+    transition: border 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+.ket a input:hover{
+  border: 2px solid #000000; /* Đường viền khi hover */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Box shadow khi hover */
+}
+
+.overlay1,
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Một lớp overlay màu đen với độ trong suốt */
+}
+
+.overlay1{
+  z-index: 1040; /* Đảm bảo overlay ở trên cùng */
+}
+.overlay{
+  z-index: 1000;
+}
+

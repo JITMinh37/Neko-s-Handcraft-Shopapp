@@ -1,0 +1,269 @@
+.form_register{
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1041 !important;
+    border: 2px solid #fff;
+    border-radius: 24px;
+    padding: 30px 30px 0 30px;
+    background-color: white;
+    transition: opacity 150ms ease-out,transform 255ms cubic-bezier(0.175, 0.745, 0.425, 1.11);
+    width: 385px;
+  }
+  
+  .closeForm{
+    position: relative;
+    top: -20px;
+    left: 114%;
+    background-color: transparent;
+    border: none;
+    font-size: 19px;
+    font-weight: 500;
+    text-decoration: none;
+    text-align: center;
+    transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42);
+  }
+  .closeForm i{
+    padding: 14px 12px 14px 12px;
+    color: white;
+  }
+  
+  .closeForm:hover{
+    background: rgba(255, 255, 255, 0.2);
+    z-index: 1042;
+    border-radius: 50%;
+  }
+  
+  .form{
+    position: relative;
+    top: -50px;
+    left: 0;
+  }
+  
+  .form_input .title{
+    display: flex;
+    font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
+      font-size: 14px;
+      line-height: 1.4;
+      flex-direction: column;
+  }
+  
+  .form_input .title h4{
+    font-family: "Graphik Webfont","-apple-system","Helvetica Neue","Droid Sans","Arial","sans-serif";
+      font-weight: 600;
+      font-size: 21px;
+      line-height: 1.35;
+      letter-spacing: .09px;
+  }
+
+  .form_input .title p{
+    line-height: 1.5;
+    font-family: "Graphik Webfont","-apple-system","Helvetica Neue","Droid Sans","Arial","sans-serif";
+    font-weight: 400;
+    font-size: 16px;
+    letter-spacing: .16px;
+  }
+  
+  
+  
+  .form_input .input{
+    margin-bottom: 18px;
+  }
+  
+  .form_input .input .title{
+    font-family: "Graphik Webfont","-apple-system","Helvetica Neue","Droid Sans","Arial","sans-serif";
+      font-weight: 600;
+      opacity: 0.9;
+      font-size: 12.99px;
+      line-height: 1.4;
+      letter-spacing: .1299px;
+      padding-bottom: 0;
+  }
+  
+  .form_input .input .input_nd{
+    background: white;
+    box-shadow: var(--clg-effect-app-input-shadow, 0px 1px 4px 0px inset rgba(14, 14, 14, 0.0901960784));
+    border: 1px solid #0e0e0e2e;
+    color: #222222;
+    border-radius: 6px;
+    font-family: inherit;
+      font-size: 16px;
+      line-height: 1.7;
+      height: 48px;
+      padding-top: 9px;
+      padding-bottom: 9px;
+      padding-left: 12px;
+      padding-right: 12px;
+      width: 100%;
+      min-width: 0;
+  }
+  
+  .form_input .input .input_nd:hover{
+    border-color: #222222d3;
+    transition: border 200ms ease-out,background 200ms ease-out;
+  }
+  
+  .btn_register{
+    margin-bottom: 18px;
+  }
+  
+  .btn_register button::before{
+    opacity: 0;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+  
+  .btn_register button{
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 24px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+      font-weight: 500;
+      line-height: 1.5;
+      min-height: 48px;
+      min-width: 48px;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      padding-left: 18px;
+      padding-right: 18px;
+      position: relative;
+      text-align: center;
+      vertical-align: middle;
+      z-index: 10;
+      width: 100%;
+  }
+  
+  .btn_register button::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: #222222;
+    border: 2px solid #222222;
+    border-radius: 24px;
+    transform: scaleX(1) scaleY(1) perspective(1px);
+    transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42),opacity 150ms ease-out; 
+  }
+  
+  .btn_register button:hover::after{
+    transform: scale(1.02);
+    transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42),opacity 150ms ease-out;
+    box-shadow: var(--clg-effect-sem-shadow-elevation-3, 0px 1px 3px 0px rgba(0, 0, 0, 0.3019607843), 0px 4px 8px 3px rgba(0, 0, 0, 0.1490196078));
+    opacity: 0.8;
+  }
+  
+  
+  
+  .divider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .line {
+    height: 0;
+    width: 129%;
+    //z-index: 1;
+  }
+  
+  .or {
+    position: relative;
+    top: -29px;
+    left: 0%;
+    background-color: #fff;
+    padding: 0 10px;
+    color: #aaa;
+    //z-index: 2;
+  }
+  
+  .signin_other .btn_signin{
+    margin-bottom: 18px;
+  }
+  
+  .signin_other .btn_signin button::before{
+    opacity: 0;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+  
+  .signin_other .btn_signin button{
+    color: black;
+    text-decoration: none;
+    border: none;
+    background-color: transparent;
+    border-radius: 24px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+      font-weight: 500;
+      line-height: 1.5;
+      min-height: 48px;
+      min-width: 48px;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      padding-left: 18px;
+      padding-right: 18px;
+      position: relative;
+      text-align: center;
+      vertical-align: middle;
+      z-index: 10;
+      width: 100%;
+  }
+  
+  .signin_other .btn_signin button::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: transparent;
+    border: 2px solid #222222;
+    border-radius: 24px;
+    transform: scaleX(1) scaleY(1) perspective(1px);
+    transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42),opacity 150ms ease-out; 
+  }
+  
+  .signin_other .btn_signin button:hover::after{
+    transform: scale(1.02);
+    transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42),opacity 150ms ease-out;
+    box-shadow: var(--clg-effect-sem-shadow-elevation-3, 0px 1px 3px 0px rgba(0, 0, 0, 0.3019607843), 0px 4px 8px 3px rgba(0, 0, 0, 0.1490196078));
+  }
+  
+  .privacy_policy{
+    font-size: 15px;
+  }
+
+  .privacy_policy a{
+      color: #4d6bc6 !important;
+      text-decoration: underline;
+  }
+  
+  .caption{
+    font-family: "Graphik Webfont","-apple-system","Helvetica Neue","Droid Sans","Arial","sans-serif";
+      font-weight: 400;
+      opacity: 0.9;
+      font-size: 12.99px;
+      line-height: 1.4;
+      letter-spacing: .1299px;
+      margin-top: 12px;
+  }

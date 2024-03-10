@@ -1,0 +1,268 @@
+.footer_tren {
+    background-color: #4CAF50; /* Màu nền chủ đạo, bạn có thể thay đổi theo ý muốn */
+    color: #fff; /* Màu chữ */
+    padding: 20px; /* Khoảng cách giữa nội dung và mép của footer */
+  }
+  
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .caption {
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: help;
+  }
+  
+  .icon {
+    height: 36px;
+    width: 36px;
+    color: #fff;
+  }
+
+  .icon i{
+    padding-top: 9px;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .title {
+    max-width: 700px; /* Giới hạn chiều rộng của title để tránh tràn ra ngoài */
+    color: #fff;
+    font-family: "Graphik Webfont","-apple-system","Helvetica Neue","Droid Sans","Arial","sans-serif";
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    letter-spacing: .16px;
+  }
+  
+  .detail {
+    opacity: 0;
+    position: absolute;
+    top: -201px; /* Điều chỉnh vị trí top để hiển thị phía trên title */
+    left: 50%;
+    right: -100px;
+    background-color: #fff;
+    color: #222222;
+    padding: 12px;
+    border-radius: 12px;
+    z-index: 1;
+    transition: opacity 500ms cubic-bezier(0.175, 0.745, 0.425, 1.11),transform 500ms cubic-bezier(0.175, 0.745, 0.425, 1.11),visibility 500ms cubic-bezier(0.175, 0.745, 0.425, 1.11);
+    transform: translate(-50%);
+    visibility: hidden;
+  }
+  .caption{
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .caption:hover .detail {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Tạo mũi tên xuống */
+  .detail::before {
+    content: "";
+    position: absolute;
+    top: 99%;
+    left: 50%;
+    margin-left: -10px; /* Điều chỉnh vị trí của mũi tên */
+    border-width: 10px;
+    border-style: solid;
+    //border-color: transparent transparent #fff transparent;
+    border-color: #fff transparent transparent transparent;
+  }
+
+
+  .footer_duoi {
+    display: flex;
+    width: 100%; /* Điều chỉnh chiều rộng tổng của footer */
+    margin: 0 auto; /* Căn giữa footer trên trang */
+  }
+  
+  .neko_app {
+    flex: 3; /* Chiếm tỷ lệ 3:7 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #3e8e41;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  
+  .logo {
+    display: block;
+    margin: 0 auto; /* Căn giữa logo */
+    border-radius: 10px; /* Bo góc ảnh */
+    margin-top: 72px;
+  }
+  
+  .logo img{
+    height: 140px;
+    width: 140px;
+    border-radius: 12px;
+  }
+
+  .btn_download {
+    display: block;
+    text-align: center;
+    padding: 12px 18px 12px 18px;
+    margin-top: 20px; /* Khoảng cách giữa logo và nút download */
+    border: 2px solid white; /* Viền nút download */
+    border-radius: 24px; /* Bo góc nút download */
+    color: white;
+    background-color: #46a049;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s; /* Thêm transition cho transform */
+    margin-bottom: 72px;
+  }
+  
+  .btn_download:hover {
+    background-color: #4CAF50;
+    color: #fff;
+    transform: scale(1.05); /* Phóng to nút khi hover */
+  }
+  
+  .about {
+    flex: 7; /* Chiếm tỷ lệ 3:7 */
+    background-color: #46a049;
+  }
+  
+  .footer_duoi .content {
+    display: flex;
+    align-items: flex-start;
+    padding: 36px 36px 24px 36px;
+  }
+  
+  .component {
+    flex: 1; /* Chiếm đều chiều ngang */
+    padding: 20px;
+    margin-right: 10px; /* Khoảng cách giữa các component */
+    display: flex;
+  flex-direction: column;
+  }
+  
+  .component h3 {
+    color: white;
+    text-align: left;
+    font-family: "Graphik Webfont","-apple-system","Helvetica Neue","Droid Sans","Arial","sans-serif";
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: .08px;
+  }
+  
+  .body {
+    margin-top: 12px; /* Khoảng cách giữa title và ul */
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  ul a{
+    text-decoration: none;
+  }
+  
+  li {
+    color: white;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    font-family: "Graphik Webfont","-apple-system","Helvetica Neue","Droid Sans","Arial","sans-serif";
+    font-weight: 300;
+    font-size: 12.99px;
+
+  }
+  .body span {
+    cursor: pointer;
+    position: relative;
+    white-space: nowrap; /* Ngăn chữ xuống dòng */
+  }
+  
+  .body span::before,
+  .body span::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: transparent;
+    transition: background-color 0.2s;
+  }
+  
+  .body span::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .body span:hover::before,
+  .body span:hover::after {
+    background-color: #fff;
+  }
+
+  .list_icon{
+    margin-left: -3px;
+  }
+
+  .list_icon ul{
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+  justify-content: space-between;
+  }
+
+  .list_icon ul li a{
+    text-decoration: none;
+    padding: 6px;
+  }
+  .list_icon span{
+    cursor: pointer;
+    transition: background-color 0.3s, border-radius 0.3s;
+  }
+
+  .list_icon span i{
+    color: white;
+    font-size: 18px;
+    transition: color 0.3s, font-size 0.3s;
+  }
+
+  .list_icon span i:hover{
+    border-radius: 50%;
+    transform: scale(1.2);
+  }
+
+  .footer{
+    background-color: #222222;
+    color: white;
+  }
+
+  .container{
+    padding: 18px 24px 18px 24px;
+  }
+
+  .container .title
+  .container .content
+  {
+    text-align: center;
+  }
+
+  .container .title i{
+    margin-right: 4px;
+  }
+
+  .container .title{
+    font-size: 12.99px;
+    line-height: 1.4;
+    font: inherit;
+    font-weight: 500;
+  }
+
+  .content .content{
+    font-size: 12.99px;
+    line-height: 1.4;
+  }

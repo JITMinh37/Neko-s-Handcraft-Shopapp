@@ -1,0 +1,87 @@
+@if(showSignIn){
+<app-sign-in
+  (closeSignInChange)="onCloseSignIn($event)"
+  (showRegisterChange)="onShowRegister($event)"
+></app-sign-in>
+<div class="overlay1"></div>
+} @if(showRegister){
+<app-register (closeRegisterChange)="onCloseRegister($event)"></app-register>
+<div class="overlay1"></div>
+}
+
+<app-header
+  (showOverlayChange)="onShowOverlayChange($event)"
+  (showSignInChange)="onShowSignInChange($event)"
+></app-header>
+<div [class.overlay]="showOverlay"></div>
+
+<div class="main">
+  <div class="container">
+    <div class="confirmation-container">
+        <h1>Xác nhận đơn hàng</h1>
+        <p>Cảm ơn bạn đã đặt hàng! Dưới đây là thông tin chi tiết về đơn hàng của bạn</p>     
+    </div>
+    <div class="row">
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col" class="text-start">Sản phẩm</th>
+                    <th scope="col">Số lượng</th>
+                    <th scope="col">Đơn giá</th>
+                    <th scope="col">Tổng giá</th>
+                  </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="product-info">
+                            <img 
+                            src="https://images.pexels.com/photos/389819/pexels-photo-389819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                            alt="Product Image" class="product-image">
+                            <span class="product-name">iphone 13</span>
+                        </div>
+                    </td>
+                    <td>2</td>
+                    <td>100,000 đ</td>
+                    <td>200,000 đ</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="product-info">
+                            <img 
+                            src="https://images.pexels.com/photos/389819/pexels-photo-389819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                            alt="Product Image" class="product-image">
+                            <span class="product-name">Macbook pro M2 2023</span>
+                        </div>
+                    </td>
+                    <td>2</td>
+                    <td>100,000 đ</td>
+                    <td>200,000 đ</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="product-info">
+                            <img 
+                            src="https://images.pexels.com/photos/389819/pexels-photo-389819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                            alt="Product Image" class="product-image">
+                            <span class="product-name">Apple Vision Pro 2023</span>
+                        </div>
+                    </td>
+                    <td>2</td>
+                    <td>100,000 đ</td>
+                    <td>200,000 đ</td>
+                </tr>
+            </tbody>
+        </table>  
+        <div class="text-start mt-3">
+          <h4 class="header-text text-end ">Tổng giá: 350,000 đ</h4>
+        </div>
+        <div class="text-center mt-3">
+            <button class="btn btn-gradient btn_confirm" type="button">Xác nhận</button>
+            <button class="btn btn-gradient btn_continue" type="button">Tiếp tục mua sắm</button>
+        </div> 
+    </div>    
+</div>
+</div>
+
+<app-footer></app-footer>

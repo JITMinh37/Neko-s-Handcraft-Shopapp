@@ -1,0 +1,373 @@
+.form_sign_in{
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1041 !important;
+  border: 2px solid #fff;
+  border-radius: 24px;
+  padding: 30px 30px 0 30px;
+  background-color: white;
+  transition: opacity 150ms ease-out,transform 255ms cubic-bezier(0.175, 0.745, 0.425, 1.11);
+  width: 385px;
+}
+
+.closeForm{
+  position: relative;
+  top: -20px;
+  left: 114%;
+  background-color: transparent;
+  border: none;
+  font-size: 19px;
+  font-weight: 500;
+  text-decoration: none;
+  text-align: center;
+  transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42);
+}
+.closeForm i{
+  padding: 14px 12px 14px 12px;
+  color: white;
+}
+
+.closeForm:hover{
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 1042;
+  border-radius: 50%;
+}
+
+.form{
+  position: relative;
+  top: -50px;
+  left: 0;
+}
+
+.form_input .title{
+  display: flex;
+  font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 12px;
+}
+
+.form_input .title h4{
+  font-family: "Graphik Webfont","-apple-system","Helvetica Neue","Droid Sans","Arial","sans-serif";
+    font-weight: 600;
+    opacity: 0.9;
+    font-size: 21px;
+    line-height: 1.35;
+    letter-spacing: .09px;
+}
+
+.form_input .register::before{
+  content: "";
+  position: absolute;
+  border: 2px solid #222222;
+  border-radius: 24px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.form_input .register{
+  background: none;
+  border: none;
+  border-radius: 24px;
+  position: relative;
+  font-size: 12.99px;
+  line-height: 1.4;
+  font-weight: 600;
+  opacity: 0.9;
+    text-align: center;
+    min-height: 36px;
+    min-width: 36px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+
+.form_input .register:hover::before{
+  transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42),opacity 150ms ease-out;
+  transform: scale(1.05);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.form_input .input{
+  margin-bottom: 18px;
+}
+
+.form_input .input .title{
+  font-family: "Graphik Webfont","-apple-system","Helvetica Neue","Droid Sans","Arial","sans-serif";
+    font-weight: 600;
+    opacity: 0.9;
+    font-size: 12.99px;
+    line-height: 1.4;
+    letter-spacing: .1299px;
+    padding-bottom: 0;
+}
+
+.form_input .input .input_nd{
+  background: white;
+  box-shadow: var(--clg-effect-app-input-shadow, 0px 1px 4px 0px inset rgba(14, 14, 14, 0.0901960784));
+  border: 1px solid #0e0e0e2e;
+  color: #222222;
+  border-radius: 6px;
+  font-family: inherit;
+    font-size: 16px;
+    line-height: 1.7;
+    height: 48px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    padding-left: 12px;
+    padding-right: 12px;
+    width: 100%;
+    min-width: 0;
+}
+
+.form_input .input .input_nd:hover{
+  border-color: #222222d3;
+  transition: border 200ms ease-out,background 200ms ease-out;
+}
+
+.Remember{
+  display: flex;
+  margin-bottom: 18px;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.input_check {
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  opacity: 0;
+  position: absolute;
+  cursor: pointer;
+}
+
+
+
+.remem_pass {
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 40px;
+  font-weight: 490;
+}
+
+.remem_pass::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  border: 2px solid #0e0e0e91;
+  border-radius: 6px;
+  transition: all 200ms ease-out;
+}
+
+.remem_pass::after{
+  content: "";
+  position: absolute;
+  opacity: 0;
+    left: 3px;
+    top: 0%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transform: scale(0.5);
+    transition: all 200ms ease-out;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22%3E%3Cpath fill%3D%22var%28--clg-color-sem-text-on-surface-strong, %23FFFFFF%29%22 d%3D%22M9.057,20.471L2.293,13.707a1,1,0,0,1,1.414-1.414l5.236,5.236,11.3-13.18a1,1,0,1,1,1.518,1.3Z%22%2F%3E%3C%2Fsvg%3E");
+    background-color: #222222;
+}
+
+.forgot{
+  margin-top: calc(6px * 1) !important;
+}
+
+.forgot a{
+  color: #595959 !important;
+  font-family: "Graphik Webfont","-apple-system","Helvetica Neue","Droid Sans","Arial","sans-serif";
+    font-weight: 400;
+    font-size: 12.99px;
+    line-height: 1.4;
+    letter-spacing: .1299px;
+    text-decoration: underline;
+    opacity: 0.9;
+    cursor: pointer;
+}
+.btn_signin{
+  margin-bottom: 18px;
+}
+
+.btn_signin button::before{
+  opacity: 0;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.btn_signin button{
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 24px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    min-height: 48px;
+    min-width: 48px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 18px;
+    padding-right: 18px;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    z-index: 10;
+    width: 100%;
+}
+
+.btn_signin button::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: #222222;
+  border: 2px solid #222222;
+  border-radius: 24px;
+  transform: scaleX(1) scaleY(1) perspective(1px);
+  transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42),opacity 150ms ease-out; 
+}
+
+.btn_signin button:hover::after{
+  transform: scale(1.02);
+  transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42),opacity 150ms ease-out;
+  box-shadow: var(--clg-effect-sem-shadow-elevation-3, 0px 1px 3px 0px rgba(0, 0, 0, 0.3019607843), 0px 4px 8px 3px rgba(0, 0, 0, 0.1490196078));
+  opacity: 0.8;
+}
+
+
+
+.divider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.line {
+  height: 0;
+  width: 129%;
+  //z-index: 1;
+}
+
+.or {
+  position: relative;
+  top: -29px;
+  left: 0%;
+  background-color: #fff;
+  padding: 0 10px;
+  color: #aaa;
+  //z-index: 2;
+}
+
+.signin_other .btn_signin{
+  margin-bottom: 18px;
+}
+
+.signin_other .btn_signin button::before{
+  opacity: 0;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.signin_other .btn_signin button{
+  color: black;
+  text-decoration: none;
+  border: none;
+  background-color: transparent;
+  border-radius: 24px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    min-height: 48px;
+    min-width: 48px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 18px;
+    padding-right: 18px;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    z-index: 10;
+    width: 100%;
+}
+
+.signin_other .btn_signin button::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: transparent;
+  border: 2px solid #222222;
+  border-radius: 24px;
+  transform: scaleX(1) scaleY(1) perspective(1px);
+  transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42),opacity 150ms ease-out; 
+}
+
+.signin_other .btn_signin button:hover::after{
+  transform: scale(1.02);
+  transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42),opacity 150ms ease-out;
+  box-shadow: var(--clg-effect-sem-shadow-elevation-3, 0px 1px 3px 0px rgba(0, 0, 0, 0.3019607843), 0px 4px 8px 3px rgba(0, 0, 0, 0.1490196078));
+}
+
+.privacy_policy a{
+    color: #4d6bc6 !important;
+    text-decoration: underline;
+}
+
+.caption{
+  font-family: "Graphik Webfont","-apple-system","Helvetica Neue","Droid Sans","Arial","sans-serif";
+    font-weight: 400;
+    opacity: 0.9;
+    font-size: 12.99px;
+    line-height: 1.4;
+    letter-spacing: .1299px;
+    margin-top: 12px;
+}

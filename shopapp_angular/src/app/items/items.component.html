@@ -1,0 +1,297 @@
+@if(showSignIn){
+    <app-sign-in (closeSignInChange)="onCloseSignIn($event)" (showRegisterChange)="onShowRegister($event)"></app-sign-in>
+    <div class = "overlay1"></div>
+}
+  
+@if(showRegister){
+    <app-register (closeRegisterChange)="onCloseRegister($event)" ></app-register>
+    <div class = "overlay1"></div>
+}
+  
+<app-header (showOverlayChange) = "onShowOverlayChange($event)" 
+  (showSignInChange)="onShowSignInChange($event)"></app-header>
+<div [class.overlay]="showOverlay"></div>
+
+<div class="main">
+    <div class="item_bestsell">
+        <div class="logo">
+            <a href="">
+                <img src="assets/image/Items.png" alt="Image Item">
+            </a>
+        </div>
+        <div class="content">
+            <div class="shop_name">
+                <a href="">Shop name</a>
+                <div class="star_rating">
+                    4.9
+                    <i class="fa-solid fa-star"></i>
+                    <p class="total_seller">(890)</p>
+                </div>
+            </div>
+            <p class="title">
+                <a href="">
+                    2024 Calendar | 12 Month Wall Hanging Calendar | A4 Calendar | Abstract Floral Calendar | Colourful Planner
+                </a>
+            </p>
+            <div class="other_info">
+                <div class="cost">
+                    <span class="cost_value">700,280</span>
+                    <span class="cost_symbol">₫</span>
+                </div>
+
+                <div class="special">
+                    <span class="free_ship">FREE shipping</span>
+                    <span class="best_seller">Bestseller</span>
+                </div>
+            </div>
+
+            <a href="" class="btn_items_detail">
+                Shop this item
+            </a>
+        </div>
+    </div>
+    <hr>
+    <div class="item_lists">
+        <div class="sort">
+            <h3 class="title">Component Name</h3>
+            <div class="sort_item" (clickOutside)="onOutsideclick($event)">
+                <button type="button" (click) = "showMenu()" class="btn_sort" [id]="showId ? 'sort_btn' : ''">
+                    <div class="content_sort">
+                        <span class="menu_trigger">
+                            <span class="text">Sort by:</span>
+                            <span class="selected_option">Lowest Price</span>
+                        </span>
+
+                        <span class="icon_menu">
+                            <i class="fa-solid fa-caret-down"></i>
+                        </span>
+                    </div>
+                </button>
+
+                <div class="menu_body" [class.menu_body_show]="showMenuBody">
+                    <div class="sort_content" (click)="showMenu()">
+                
+                        <span class="trigger">
+                            <span class="caption">Sort by:</span>
+                            <span class="option">Lowest Price</span>
+                        </span>
+
+                        <span class="icon">
+                            <i class="fa-solid fa-caret-down"></i>
+                        </span>
+                    </div>
+                    <a href="" type="button" class="menu_item" aria-checked="true">
+                        Lowest Price
+                    </a>
+
+                    <a href="" type="button" class="menu_item" aria-checked="false">
+                        Highest Price
+                    </a>
+
+                    <a href="" type="button" class="menu_item" aria-checked="false">
+                        Top Customer Reviews
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="list_item">
+            <ol>
+                <li>
+                    <div class="item">
+                        <a href="">
+                            <div class="image">
+                                <img src="assets/image/item.png" alt="">
+                            </div>
+
+                            <div class="content">
+                                <h3 class="caption_text">                                    
+                                    Personalized Compact Mirror,Customized Bridesmaid Mirror, Pocket Mirror Bridesmaid Gift, Bridal Party Gift, Laser Process Engraved Mirror
+                                </h3>
+
+                                <div class="rating">
+                                    4.9
+                                    <i class="fa-solid fa-star"></i>
+                                    <p class="total_seller">(890)</p>
+                                </div>
+
+                                <div class="cost_info">
+                                    <p class="cost_txt">
+                                        <span class="cost_value">700,280</span>
+                                        <span class="cost_symbol">₫</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <div class="add_cart">
+                            <div class="btn_add_cart">
+                                <form action="" method="post" class="form_add_cart">
+                                    <button type="submit">
+                                        <i class="fa-solid fa-plus"></i>
+                                        <p>Add to cart</p>
+                                    </button>
+                                </form>
+                            </div>  
+
+                            <div class="more_this">
+                                <a href="">
+                                    More like this
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="item">
+                        <a href="">
+                            <div class="image">
+                                <img src="assets/image/item.png" alt="">
+                            </div>
+
+                            <div class="content">
+                                <h3 class="caption_text">                                    
+                                    Personalized Compact Mirror,Customized Bridesmaid Mirror, Pocket Mirror Bridesmaid Gift, Bridal Party Gift, Laser Process Engraved Mirror
+                                </h3>
+
+                                <div class="rating">
+                                    4.9
+                                    <i class="fa-solid fa-star"></i>
+                                    <p class="total_seller">(890)</p>
+                                </div>
+
+                                <div class="cost_info">
+                                    <p class="cost_txt">
+                                        <span class="cost_value">700,280</span>
+                                        <span class="cost_symbol">₫</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <div class="add_cart">
+                            <div class="btn_add_cart">
+                                <form action="" method="post" class="form_add_cart">
+                                    <button type="submit">
+                                        <i class="fa-solid fa-plus"></i>
+                                        <p>Add to cart</p>
+                                    </button>
+                                </form>
+                            </div>  
+
+                            <div class="more_this">
+                                <a href="">
+                                    More like this
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="item">
+                        <a href="">
+                            <div class="image">
+                                <img src="assets/image/item.png" alt="">
+                            </div>
+
+                            <div class="content">
+                                <h3 class="caption_text">                                    
+                                    Personalized Compact Mirror,Customized Bridesmaid Mirror, Pocket Mirror Bridesmaid Gift, Bridal Party Gift, Laser Process Engraved Mirror
+                                </h3>
+
+                                <div class="rating">
+                                    4.9
+                                    <i class="fa-solid fa-star"></i>
+                                    <p class="total_seller">(890)</p>
+                                </div>
+
+                                <div class="cost_info">
+                                    <p class="cost_txt">
+                                        <span class="cost_value">700,280</span>
+                                        <span class="cost_symbol">₫</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <div class="add_cart">
+                            <div class="btn_add_cart">
+                                <form action="" method="post" class="form_add_cart">
+                                    <button type="submit">
+                                        <i class="fa-solid fa-plus"></i>
+                                        <p>Add to cart</p>
+                                    </button>
+                                </form>
+                            </div>  
+
+                            <div class="more_this">
+                                <a href="">
+                                    More like this
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li>
+                    <div class="item">
+                        <a href="">
+                            <div class="image">
+                                <img src="assets/image/item.png" alt="">
+                            </div>
+
+                            <div class="content">
+                                <h3 class="caption_text">                                    
+                                    Personalized Compact Mirror,Customized Bridesmaid Mirror, Pocket Mirror Bridesmaid Gift, Bridal Party Gift, Laser Process Engraved Mirror
+                                </h3>
+
+                                <div class="rating">
+                                    4.9
+                                    <i class="fa-solid fa-star"></i>
+                                    <p class="total_seller">(890)</p>
+                                </div>
+
+                                <div class="cost_info">
+                                    <p class="cost_txt">
+                                        <span class="cost_value">700,280</span>
+                                        <span class="cost_symbol">₫</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <div class="add_cart">
+                            <div class="btn_add_cart">
+                                <form action="" method="post" class="form_add_cart">
+                                    <button type="submit">
+                                        <i class="fa-solid fa-plus"></i>
+                                        <p>Add to cart</p>
+                                    </button>
+                                </form>
+                            </div>  
+
+                            <div class="more_this">
+                                <a href="">
+                                    More like this
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                
+            </ol>
+        </div>
+
+    </div>
+</div>
+
+
+
+<app-footer></app-footer>
