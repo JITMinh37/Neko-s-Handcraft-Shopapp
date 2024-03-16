@@ -1,39 +1,80 @@
-<div class="form_sign_in">
+<div class="form_register">
 
     <button class="closeForm" (click)="closeForm()">
         <i class="fa-solid fa-x"></i>
     </button>
 
     <div class="form">
-        <form action="">
+        <form action="" #registerForm="ngForm"> <!--#registerForm là biến mẫu của form, có thể sử dụng biến này ở trong form -->
             <div class="form_input">
                 <div class="title">
-                    <h4>Sign in</h4>
-                    <button class="register" (click)="onClickRegister()">Register</button>
+                    <h3>Create your account</h3>
+                    <p>Registration is easy</p>
                 </div>
 
                 <div class="input">
-                    <label for="" class="title">Email address</label>
-                    <input type="email" name="email" class="input_nd">
+                    <label for="phone" class="title">Phone Number</label>
+                    <input type="phone" name="phone" class="input_nd" [(ngModel)]="phoneNumber" required
+                        (focus)="registerForm.form.markAsTouched()"
+                            placeholder="At least 10 characters">
+                    @if(phoneNumber.length < 10 && registerForm.form.touched){
+                        <p class="text-danger">Phone number must be at least 10 characters</p>
+                    }
                 </div>
 
                 <div class="input">
-                    <label for="" class="title">Password</label>
-                    <input type="password" name="password" class="input_nd">
+                    <label for="name" class="title">Full Name</label>
+                    <input type="text" name="name" class="input_nd" [(ngModel)]="fullname" required>
+                    <!-- [(ngModel)]="fullname" là một binding hai chiều (two-way binding) trong Angular. Nó kết nối dữ liệu giữa trường input và một biến hoặc thuộc tính trong class của Angular component. -->
                 </div>
 
-                <div class="Remember">
-                    <div class="checkbox">
-                        <input type="checkbox" id="persisent" name="persisent" class="input_check" checked="checked" value="true"    >
-                        <label for="persisent" class="remem_pass">Stay signed in</label>
-                    </div>
-                    <div class="forgot">
-                        <a href="">Forgot your password?</a>
-                    </div>
+                <div class="input">
+                    <label for="password" class="title">Password</label>
+                    <input type="password" name="password" class="input_nd" [(ngModel)]="password" required
+                        (focus)="registerForm.form.markAsTouched()"
+                        placeholder="At least 8 characters">
+                    @if(password.length < 8 && registerForm.form.touched){
+                        <p class="text-danger">Password must be at least 8 characters</p>
+                    }
                 </div>
 
-                <div class="btn_signin">
-                    <button type="submit">Sign in</button>
+                <div class="input">
+                    <label for="retype_password" class="title">Retype Password</label>
+                    <input type="password" name="retype_password" class="input_nd" [(ngModel)]="retypePassword" required
+                    (input)="registerForm.form.markAsTouched(); checkPasswordsMatch()"
+                    placeholder="At least 8 characters">
+                    @if(password.length < 8 && registerForm.form.touched){
+                        <p class="text-danger">Password must be at least 8 characters</p>
+                    }
+                    @if(registerForm.form.controls['retype_password'].hasError('passwordMismatch') && registerForm.form.touched){
+                        <p class="text-danger">password incorrect</p>
+                    }
+                </div>
+
+                <div class="input">
+                    <label for="date_of_birth" class="title">Date of birth</label>
+                    <input type="date" name="date_of_birth" class="input_nd" [(ngModel)]="dateOfBirth" required
+                    (input)="registerForm.form.markAsTouched(); checkAge()">
+                    @if(registerForm.form.controls['date_of_birth'].hasError('invalidDate')){
+                        <p class="text-danger">you are not yet 18 years old</p>
+                    }
+                </div>  
+
+                <div class="input">
+                    <label for="address" class="title">Address</label>
+                    <input type="text" name="address" class="input_nd" [(ngModel)]="address" >
+                </div>
+
+
+                <p class="privacy_policy">
+                    By clicking Continue with Google, Facebook, or Apple, you agree to Neko's
+                    <a href="" target="_blank" title="Terms of Use">Terms of Use</a>
+                    and 
+                    <a href="" target="_blank" title="Privacy Policy">Privacy Policy</a> 
+                </p>
+
+                <div class="btn_register">
+                    <button type="submit" (click) = "register()">Register</button>
                 </div>
             </div>
 
@@ -56,6 +97,7 @@
                                 <polygon id="Shape" points="0 0 16 0 16 16 0 16"></polygon>
                             </g>
                         </svg>
+                        
                         Continue with Google
                     </button>
                 </div>
@@ -67,6 +109,7 @@
                             <path d="M11.0214054,15.9571892 L11.0214054,9.7917529 L13.0908417,9.7917529 L13.4007104,7.38897297 L11.0214054,7.38897297 L11.0214054,5.85494981 C11.0214054,5.15928958 11.2145792,4.68522008 12.212139,4.68522008 L13.4844788,4.68466409 L13.4844788,2.53559846 C13.2644324,2.5063166 12.5091583,2.44089575 11.6304556,2.44089575 C9.79601544,2.44089575 8.54010811,3.56064865 8.54010811,5.61698842 L8.54010811,7.38897297 L6.46535907,7.38897297 L6.46535907,9.7917529 L8.54010811,9.7917529 L8.54010811,15.9571892 L11.0214054,15.9571892 Z" id="f" fill="#FFFFFF"></path>
                         </svg>
                         Continue with Facebook
+
                     </button>
                 </div>
 
@@ -79,13 +122,6 @@
                         Continue with Apple
                     </button>
                 </div>
-
-                <p class="privacy_policy">
-                    By clicking Continue with Google, Facebook, or Apple, you agree to Neko's
-                    <a href="" target="_blank" title="Terms of Use">Terms of Use</a>
-                    and 
-                    <a href="" target="_blank" title="Privacy Policy">Privacy Policy</a> 
-                </p>
 
                 <div class="caption">
                     Neko's Handcrafts may send you communications; you may change your preferences in your account settings.

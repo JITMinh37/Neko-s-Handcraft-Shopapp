@@ -1,42 +1,53 @@
-<div class="form_register">
+<div class="form_sign_in">
 
     <button class="closeForm" (click)="closeForm()">
         <i class="fa-solid fa-x"></i>
     </button>
 
     <div class="form">
-        <form action="">
+        <form action="" #loginForm = "ngForm">
             <div class="form_input">
                 <div class="title">
-                    <h3>Create your account</h3>
-                    <p>Registration is easy</p>
+                    <h4>Sign in</h4>
+                    <button class="register" (click)="onClickRegister()">Register</button>
                 </div>
 
                 <div class="input">
-                    <label for="email" class="title">Email address</label>
-                    <input type="email" name="email" class="input_nd">
+                    <label for="phoneNumber" class="title">Phone number</label>
+                    <input type="phone" name="phoneNumber" class="input_nd"
+                        [(ngModel)]="phoneNumber" required
+                        (forcus) = "loginForm.form.markAsTouched"
+                        placeholder="At least 10 characters"
+                    >
+                    @if(phoneNumber.length < 10 && this.loginForm.touched){
+                        <p class="text-danger">Phone number must be at least 10 characters</p>
+                    }
                 </div>
 
                 <div class="input">
-                    <label for="name" class="title">Full Name</label>
-                    <input type="text" name="name" class="input_nd">
+                    <label for="" class="title">Password</label>
+                    <input type="password" name="password" class="input_nd"
+                    [(ngModel)]="password" required
+                    (forcus) = "loginForm.form.markAsTouched"
+                    placeholder="At least 8 characters"
+                    >
+                    @if(password.length < 8 && loginForm.form.touched){
+                        <p class="text-danger">Password must be at least 8 characters</p>
+                    }
                 </div>
 
-                <div class="input">
-                    <label for="password" class="title">Password</label>
-                    <input type="password" name="password" class="input_nd">
+                <div class="Remember">
+                    <div class="checkbox">
+                        <input type="checkbox" id="persisent" name="persisent" class="input_check" checked="checked" value="true"    >
+                        <label for="persisent" class="remem_pass">Stay signed in</label>
+                    </div>
+                    <div class="forgot">
+                        <a href="">Forgot your password?</a>
+                    </div>
                 </div>
 
-
-                <p class="privacy_policy">
-                    By clicking Continue with Google, Facebook, or Apple, you agree to Neko's
-                    <a href="" target="_blank" title="Terms of Use">Terms of Use</a>
-                    and 
-                    <a href="" target="_blank" title="Privacy Policy">Privacy Policy</a> 
-                </p>
-
-                <div class="btn_register">
-                    <button type="submit">Register</button>
+                <div class="btn_signin">
+                    <button type="submit" (click)="Login()">Sign in</button>
                 </div>
             </div>
 
@@ -82,6 +93,13 @@
                         Continue with Apple
                     </button>
                 </div>
+
+                <p class="privacy_policy">
+                    By clicking Continue with Google, Facebook, or Apple, you agree to Neko's
+                    <a href="" target="_blank" title="Terms of Use">Terms of Use</a>
+                    and 
+                    <a href="" target="_blank" title="Privacy Policy">Privacy Policy</a> 
+                </p>
 
                 <div class="caption">
                     Neko's Handcrafts may send you communications; you may change your preferences in your account settings.

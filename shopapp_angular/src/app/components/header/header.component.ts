@@ -37,7 +37,6 @@ export class HeaderComponent {
 
   showSignIn(){
     this.showSignInForm = true;
-    console.log(this.showSignInForm);
     this.showSignInChange.emit(this.showSignInForm);
   }
 }

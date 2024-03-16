@@ -55,6 +55,7 @@ public class User extends BaseEntity implements UserDetails { // Implement từ 
     // Phương thức này lấy ra tất cả các role theo dạng: ROLE_ADMIN, ROLE_EMPLOYEE.
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+        // Trong một ứng dụng sử dụng Spring Security, quy tắc chung là vai trò (role) của người dùng được định nghĩa trong một chuỗi có dạng "ROLE_rolename".
         List<SimpleGrantedAuthority> authorityList = new ArrayList<>();
         authorityList.add(new SimpleGrantedAuthority("ROLE_"+getRole().getName().toUpperCase()));
         return authorityList;
@@ -87,6 +88,6 @@ public class User extends BaseEntity implements UserDetails { // Implement từ 
     // Kiểm tra xem tài khoản của người dùng có được kích hoạt hay không
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }

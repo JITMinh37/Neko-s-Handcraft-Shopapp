@@ -23,6 +23,8 @@
     "@angular/ssr": "^17.0.8",
     "@fortawesome/fontawesome-free": "^6.5.1",
     "bootstrap": "^5.3.2",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
     "express": "^4.18.2",
     "ng-click-outside": "^9.0.1",
     "rxjs": "~7.8.0",

@@ -1,9 +1,14 @@
 package com.project.shopapp.controller;
 
 
+import com.project.shopapp.components.LocalizationUtils;
 import com.project.shopapp.dto.UserDTO;
 import com.project.shopapp.dto.UserLoginDTO;
+import com.project.shopapp.model.User;
+import com.project.shopapp.response.LoginResponse;
+import com.project.shopapp.response.RegisterResponse;
 import com.project.shopapp.service.IUserService;
+import com.project.shopapp.utils.MessageKeys;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +27,7 @@ import java.util.List;
 public class UserController {
 
     private final IUserService userService;
+    private final LocalizationUtils localizationUtils;
 
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(
@@ -29,18 +35,22 @@ public class UserController {
             BindingResult result
             ){
         try {
+            RegisterResponse registerResponse = new RegisterResponse();
             if(result.hasErrors()){
                 List<String> messageError = result.getFieldErrors()
                         .stream()
                         .map(FieldError::getDefaultMessage)
                         .toList();
-                return ResponseEntity.badRequest().body(messageError);
+                registerResponse.setMessage(messageError.toString());
+                return ResponseEntity.badRequest().body(registerResponse);
             }
             if(!userDTO.getPassword().equals(userDTO.getRetypePassword())){
-                ResponseEntity.ok().body("Password is dose not match");
+                registerResponse.setMessage("Re-entered password is incorrect!");
+                return ResponseEntity.badRequest().body(registerResponse);
             }
-            userService.createUser(userDTO);
-            return ResponseEntity.ok().body("Register Sucessionfully!");
+            User user = userService.createUser(userDTO);
+            registerResponse.setUser(user);
+            return ResponseEntity.ok().body(registerResponse);
         }catch(Exception e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }
@@ -50,7 +60,15 @@ public class UserController {
     public ResponseEntity<?> loginUser(
             @Valid @RequestBody UserLoginDTO userLoginDTO
             ) throws Exception {
-        String token = userService.login(userLoginDTO.getPhoneNumber(), userLoginDTO.getPassword());
-        return ResponseEntity.ok(token);
+        try{
+            String token = userService.login(userLoginDTO.getPhoneNumber(), userLoginDTO.getPassword());
+            return ResponseEntity.ok().body(LoginResponse.builder()
+                    .message(localizationUtils.getLocalizedMessage(MessageKeys.LOGIN_SUCCESSFULLY))
+                    .token(token)
+                    .build());
+        }catch(Exception e){
+            return ResponseEntity.ok().body(localizationUtils.getLocalizedMessage(MessageKeys.LOGIN_FAILED, e.getMessage()));
+        }
+
     }
 }

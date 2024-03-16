@@ -3,6 +3,7 @@ package com.project.shopapp.service;
 import com.project.shopapp.components.JwtTokenUtil;
 import com.project.shopapp.dto.UserDTO;
 import com.project.shopapp.exceptions.DataNotFoundException;
+import com.project.shopapp.exceptions.PermissionDenyException;
 import com.project.shopapp.model.Role;
 import com.project.shopapp.model.User;
 import com.project.shopapp.repository.RoleRepository;
@@ -10,8 +11,8 @@ import com.project.shopapp.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -27,10 +28,15 @@ public class UserService implements IUserService{
     private final AuthenticationManager authenticationManager;
     private final JwtTokenUtil jwtTokenUtil;
     @Override
-    public User createUser(UserDTO userDTO) throws DataNotFoundException{
+    public User createUser(UserDTO userDTO) throws DataNotFoundException, PermissionDenyException {
         String phoneNumber = userDTO.getPhoneNumber();
         if(userRepository.existsByPhoneNumber(phoneNumber)){
             throw new DataIntegrityViolationException("Phone number already exists");
+        }
+        Role role = roleRepository.findById(userDTO.getRoleId())
+                .orElseThrow(()-> new DataNotFoundException("Role not found!"));
+        if(role.getName().toUpperCase().equals("ADMIN")){
+            throw new PermissionDenyException("Admin cannot create account");
         }
         User newUser = User.builder()
                 .fullName(userDTO.getFullName())
@@ -39,13 +45,10 @@ public class UserService implements IUserService{
                 .address(userDTO.getAddress())
                 .active(true)
                 .dateOfBirth(userDTO.getDateOfBirth())
+                .role(role)
                 .facebookAccountId(userDTO.getFacebookAccountId())
                 .googleAccountId(userDTO.getGoogleAccountId())
                 .build();
-        Role role = roleRepository.findById(userDTO.getRoleId())
-                .orElseThrow(()-> new DataNotFoundException("Role not found!"));
-        newUser.setRole(role);
-        // Kiểm tra nếu có accountId, không yêu cầu password
         if (userDTO.getFacebookAccountId() == 0 && userDTO.getGoogleAccountId() == 0) {
             String password = userDTO.getPassword();
             String encodePassword = passwordEncoder.encode(password);
@@ -56,25 +59,25 @@ public class UserService implements IUserService{
 
     @Override
     public String login(String phoneNumber, String password) throws Exception {
-        Optional<User> optionalUser = userRepository.findByPhoneNumber(phoneNumber);
-        if(optionalUser.isEmpty()) {
-            throw new DataNotFoundException("Invalid phone number / password");
-        }
-        //return optionalUser.get();//muốn trả JWT token ?
-        User existingUser = optionalUser.get();
-        //check password
-        if (existingUser.getFacebookAccountId() == 0
-                && existingUser.getGoogleAccountId() == 0) {
-            if(!passwordEncoder.matches(password, existingUser.getPassword())) {
-                throw new BadCredentialsException("Wrong phone number or password");
-            }
-        }
+//        Optional<User> optionalUser = userRepository.findByPhoneNumber(phoneNumber);
+//        if(optionalUser.isEmpty()) {
+//            throw new DataNotFoundException("Invalid phone number / password");
+//        }
+//        //return optionalUser.get();//muốn trả JWT token ?
+//        User existingUser = optionalUser.get();
+//        //check password
+//        if (existingUser.getFacebookAccountId() == 0
+//                && existingUser.getGoogleAccountId() == 0) {
+//            if(!passwordEncoder.matches(password, existingUser.getPassword())) {
+//                throw new BadCredentialsException("Wrong phone number or password");
+//            }
+//        }
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
-                phoneNumber, password,
-                existingUser.getAuthorities()
+                phoneNumber, password
         );
 
-        authenticationManager.authenticate(authenticationToken);
-        return jwtTokenUtil.generateToken(existingUser);
+        Authentication authenticate = authenticationManager.authenticate(authenticationToken);
+        User principal = (User) authenticate.getPrincipal(); //Sau khi quá trình xác thực thành công, đối tượng Authentication sẽ chứa thông tin người dùng được xác thực. Phương thức getPrincipal() trả về đối tượng chính của người dùng đã được xác thực.
+        return jwtTokenUtil.generateToken(principal);
     }
 }
