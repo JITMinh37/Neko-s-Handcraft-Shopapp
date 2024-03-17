@@ -6,13 +6,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { LoginDTO } from '../../dtos/users/login.dto';
+import { LoginResponse } from '../../responses/login.response';
+import { TokenService } from '../../services/token.service';
 @Component({
   selector: 'app-sign-in',
   standalone: true,
   imports: [ClickOutsideModule, HttpClientModule, FormsModule],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.scss',
-  providers: [UserService]
+  providers: [UserService, TokenService]
 })
 export class SignInComponent {
   @Output() closeSignInChange = new EventEmitter<boolean>();
@@ -22,7 +24,8 @@ export class SignInComponent {
   showRegister: boolean;
   phoneNumber: string;
   password: string;
-  constructor(private userService: UserService){
+  rememberMe: boolean = true;
+  constructor(private userService: UserService, private tokenService: TokenService){
     this.showSignIn = false;
     this.showRegister = false;
     this.phoneNumber = '';
@@ -39,7 +42,12 @@ export class SignInComponent {
     
     this.userService.login(loginDTO)
         .subscribe({
-          next: (response: any) => {
+          next: (response: LoginResponse) => {
+            debugger;
+            const token = response.token;
+            if(this.rememberMe){
+              this.tokenService.setToken(token);
+            }
             debugger;
           },
           complete: () => {
@@ -47,7 +55,7 @@ export class SignInComponent {
           },
           error: (err: any) => {
             debugger;
-            alert(`Cannot register, error: ${err.error}`)
+            alert(`Cannot login, error: ${err.error}`)
           }
         });
   }

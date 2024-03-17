@@ -8,6 +8,7 @@ import com.project.shopapp.model.Role;
 import com.project.shopapp.model.User;
 import com.project.shopapp.repository.RoleRepository;
 import com.project.shopapp.repository.UserRepository;
+import com.project.shopapp.response.LoginResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -58,7 +59,7 @@ public class UserService implements IUserService{
     }
 
     @Override
-    public String login(String phoneNumber, String password) throws Exception {
+    public LoginResponse login(String phoneNumber, String password) throws Exception {
 //        Optional<User> optionalUser = userRepository.findByPhoneNumber(phoneNumber);
 //        if(optionalUser.isEmpty()) {
 //            throw new DataNotFoundException("Invalid phone number / password");
@@ -72,12 +73,16 @@ public class UserService implements IUserService{
 //                throw new BadCredentialsException("Wrong phone number or password");
 //            }
 //        }
+
+        Role role = userRepository.findRoleByPhoneNumber(phoneNumber);
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                 phoneNumber, password
         );
 
         Authentication authenticate = authenticationManager.authenticate(authenticationToken);
         User principal = (User) authenticate.getPrincipal(); //Sau khi quá trình xác thực thành công, đối tượng Authentication sẽ chứa thông tin người dùng được xác thực. Phương thức getPrincipal() trả về đối tượng chính của người dùng đã được xác thực.
-        return jwtTokenUtil.generateToken(principal);
+        return LoginResponse.builder().token(jwtTokenUtil.generateToken(principal))
+                .role(role.getName())
+                .build();
     }
 }

@@ -61,14 +61,14 @@ public class UserController {
             @Valid @RequestBody UserLoginDTO userLoginDTO
             ) throws Exception {
         try{
-            String token = userService.login(userLoginDTO.getPhoneNumber(), userLoginDTO.getPassword());
-            return ResponseEntity.ok().body(LoginResponse.builder()
-                    .message(localizationUtils.getLocalizedMessage(MessageKeys.LOGIN_SUCCESSFULLY))
-                    .token(token)
-                    .build());
+            LoginResponse loginResponse = userService.login(userLoginDTO.getPhoneNumber(), userLoginDTO.getPassword());
+            loginResponse.setMessage(localizationUtils.getLocalizedMessage(MessageKeys.LOGIN_SUCCESSFULLY));
+            return ResponseEntity.ok().body(loginResponse);
         }catch(Exception e){
-            return ResponseEntity.ok().body(localizationUtils.getLocalizedMessage(MessageKeys.LOGIN_FAILED, e.getMessage()));
+            return ResponseEntity.ok().body(LoginResponse.builder()
+                .message(localizationUtils.getLocalizedMessage(MessageKeys.LOGIN_FAILED, e.getMessage()))
+                .build()
+            );
         }
-
     }
 }
