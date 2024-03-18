@@ -6,13 +6,15 @@ import { FooterComponent } from '../footer/footer.component';
 import { SignInComponent } from '../sign-in/sign-in.component';
 import { RegisterComponent } from '../register/register.component';
 import { CustomEvent } from '../register/object-event.interface';
-
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from '../../app.routes';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FormsModule, NgIf, HeaderComponent, FooterComponent, SignInComponent, RegisterComponent],
+  imports: [FormsModule, NgIf, HeaderComponent, FooterComponent, SignInComponent, RegisterComponent, AppRoutingModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
+
 })
 export class HomeComponent{
   showOverlay = false;

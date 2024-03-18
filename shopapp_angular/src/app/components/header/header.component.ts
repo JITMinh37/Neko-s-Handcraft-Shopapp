@@ -17,7 +17,9 @@ export class HeaderComponent {
   showDropdown = false;
   showOverlay = false;
   showSignInForm = false;
-  toggleDropdown() {
+  showMenu = false;
+  toggleDropdown(event: Event) {
+    event.stopPropagation();
     this.showDropdown = !this.showDropdown;
     this.showOverlay = this.showDropdown;
     this.showOverlayChange.emit(this.showOverlay);
@@ -26,6 +28,7 @@ export class HeaderComponent {
   onOutsideClick(e : Event): void {
     this.showDropdown = false;
     this.showOverlay = false;
+    this.showMenu = false;
     this.showOverlayChange.emit(this.showOverlay);
   }
 
@@ -38,5 +41,10 @@ export class HeaderComponent {
   showSignIn(){
     this.showSignInForm = true;
     this.showSignInChange.emit(this.showSignInForm);
+  }
+  toggleMenu(event: Event){
+    event.stopPropagation();
+    this.showMenu = !this.showMenu;
+    console.log(this.showMenu);
   }
 }

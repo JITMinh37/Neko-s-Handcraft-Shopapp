@@ -5,10 +5,12 @@ import { SignInComponent } from '../sign-in/sign-in.component';
 import { RegisterComponent } from '../register/register.component';
 import { CustomEvent } from '../register/object-event.interface';
 import { ClickOutsideModule } from 'ng-click-outside';
+import { RouterModule } from '@angular/router';
+RouterModule
 @Component({
   selector: 'app-items',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, SignInComponent, RegisterComponent, ClickOutsideModule],
+  imports: [HeaderComponent, FooterComponent, SignInComponent, RegisterComponent, ClickOutsideModule, RouterModule],
   templateUrl: './items.component.html',
   styleUrl: './items.component.scss'
 })
