@@ -8,6 +8,9 @@ import { FormsModule } from '@angular/forms';
 import { LoginDTO } from '../../dtos/users/login.dto';
 import { LoginResponse } from '../../responses/login.response';
 import { TokenService } from '../../services/token.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-sign-in',
   standalone: true,
@@ -25,7 +28,10 @@ export class SignInComponent {
   phoneNumber: string;
   password: string;
   rememberMe: boolean = true;
-  constructor(private userService: UserService, private tokenService: TokenService){
+  currentUrl: string = '';
+  constructor(private userService: UserService, private tokenService: TokenService, private router: Router, 
+    private authService: AuthService,
+    private location: Location){
     this.showSignIn = false;
     this.showRegister = false;
     this.phoneNumber = '';
@@ -34,7 +40,7 @@ export class SignInComponent {
   Login(){
     const message = 'phone' + this.phoneNumber + ' password' + this.password;
     //alert(message);
-    
+    this.currentUrl = this.router.url;
     const loginDTO: LoginDTO = {    
       "phone_number": this.phoneNumber,
       "password": this.password,
@@ -48,6 +54,8 @@ export class SignInComponent {
             if(this.rememberMe){
               this.tokenService.setToken(token);
             }
+            this.authService.setLoggedIn(true);
+            this.location.go(this.currentUrl);
             debugger;
           },
           complete: () => {
@@ -76,5 +84,5 @@ export class SignInComponent {
 
     this.showRegisterChange.emit(eventObject);   
   }
-
+  
 }

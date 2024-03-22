@@ -52,10 +52,10 @@ public class WebSecurityConfig {
                                     String.format("%s/categories/**", apiPrefix)).hasAnyRole("ADMIN")
 
                             .requestMatchers(GET,
-                                    String.format("%s/products**", apiPrefix)).hasAnyRole("USER", "ADMIN")
+                                    String.format("%s/products**", apiPrefix)).permitAll()
 
-                            .requestMatchers(POST,
-                                    String.format("%s/products/**", apiPrefix)).hasAnyRole("ADMIN")
+                            .requestMatchers(GET,
+                                    String.format("%s/products/uploads/*", apiPrefix)).permitAll()
 
                             .requestMatchers(PUT,
                                     String.format("%s/products/**", apiPrefix)).hasAnyRole("ADMIN")

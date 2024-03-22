@@ -6,7 +6,7 @@ import { OrderComponent } from './components/order/order.component';
 import { OrderConfirmComponent } from './components/order-confirm/order-confirm.component';
 import { NgModule } from '@angular/core';
 export const routes: Routes = [
-    { path: 'home', component: HomeComponent },
+    { path: '', component: HomeComponent },
     { path: 'items', component: ItemsComponent },
     { path: 'item/:id', component: ItemDetailsComponent },
     { path: 'order', component: OrderComponent },

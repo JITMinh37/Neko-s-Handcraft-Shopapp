@@ -36,55 +36,62 @@
             <i class="fa-solid fa-magnifying-glass"></i>
           </div>
         </div>
-  
+        
         <!-- Đăng nhập Button -->
-        <button class="btn transparent-btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="showSignIn()">Sign in</button>
+        @if(!isLoggedIn){
+          <button class="btn transparent-btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="showSignIn()">Sign in</button>
+
+        }
+        
   
         <!-- Đơn hàng Icon -->
         <div class="d-flex align-items-center cart-icon">
           <i class="fa-solid fa-cart-shopping"></i>
         </div>
 
-        <div class="view_account" (clickOutside)="onOutsideClick($event)">
-          <button class="account" (click)="toggleMenu($event)">
-            <i class="fa-regular fa-user icon_account"></i>
-            <i class="fa-solid fa-caret-down trigger"></i>
-          </button>
-          @if(showMenu){
-            <div class="menu">
-              <ul class="list-menu">
-                <li>
-                  <a href="" class="profile">
-                    <i class="fa-regular fa-user icon_account"></i>
-                    <span>
-                      <h4 class="user_name">Hoàng Nguyễn Nhật Minh</h4>
-                      <p>View your profile</p>
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <hr>
-                </li>
-                <li>
-                  <a href="" class="setting">
-                    <i class="fa-solid fa-gear"></i>
-                    <span>
-                      <p>Account Setting</p>
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a href="" class="sign_out">
-                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                    <span>
-                      <p>Sign out</p>
-                    </span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          }
-        </div>
+        @if(isLoggedIn){
+          <div class="view_account" (clickOutside)="onOutsideClick($event)">
+            <button class="account" (click)="toggleMenu($event)">
+              <i class="fa-regular fa-user icon_account"></i>
+              <i class="fa-solid fa-caret-down trigger"></i>
+            </button>
+            @if(showMenu){
+              <div class="menu">
+                <ul class="list-menu">
+                  <li>
+                    <a href="" class="profile">
+                      <i class="fa-regular fa-user icon_account"></i>
+                      <span>
+                        <h4 class="user_name">Hoàng Nguyễn Nhật Minh</h4>
+                        <p>View your profile</p>
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <hr>
+                  </li>
+                  <li>
+                    <a href="" class="setting">
+                      <i class="fa-solid fa-gear"></i>
+                      <span>
+                        <p>Account Setting</p>
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="" class="sign_out">
+                      <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                      <span>
+                        <p>Sign out</p>
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            }
+          </div>
+        }
+        
       </div>
   </nav>
 </header>

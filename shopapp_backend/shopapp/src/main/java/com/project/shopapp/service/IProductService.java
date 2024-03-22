@@ -15,10 +15,11 @@ import java.util.List;
 public interface IProductService {
     Product createProduct(ProductDTO productDTO) throws DataNotFoundException;
     Product getProduct(long id) throws DataNotFoundException;
-    Page<ProductResponse> getAllProducts(PageRequest pageRequest);
+    Page<ProductResponse> getAllProducts(String keyword, Long categoryId, PageRequest pageRequest);
     Product updateProduct(long id, ProductDTO productDTO) throws DataNotFoundException;
     void deleteProduct(long id);
     boolean existsByName(String name);
+    void updateThumbnail(long id, String thumbnailUrl);
     ProductImage createProductImage(
             long productId,
             ProductImageDTO productImageDTO

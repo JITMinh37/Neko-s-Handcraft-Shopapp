@@ -26,46 +26,56 @@ public class ProductService implements IProductService{
     private final ProductImageRepository productImageRepository;
     @Override
     public Product createProduct(ProductDTO productDTO) throws DataNotFoundException {
-        Category category = categoryRepository.findById(productDTO.getCategoryId())
-                .orElseThrow(()-> new DataNotFoundException("Category not found"));
+        Category existingCategory = categoryRepository
+                .findById(productDTO.getCategoryId())
+                .orElseThrow(() ->
+                        new DataNotFoundException(
+                                "Cannot find category with id: "+productDTO.getCategoryId()));
+
         Product newProduct = Product.builder()
                 .name(productDTO.getName())
                 .price(productDTO.getPrice())
                 .thumbnail(productDTO.getThumbnail())
                 .description(productDTO.getDescription())
-                .material(productDTO.getMaterial())
-                .category(category)
+                .category(existingCategory)
                 .build();
         return productRepository.save(newProduct);
     }
 
     @Override
     public Product getProduct(long id) throws DataNotFoundException {
-        return productRepository.findById(id)
-                .orElseThrow(()->new DataNotFoundException("Cannot find product with id =" + id));
+        return productRepository.findById(id).
+                orElseThrow(()-> new DataNotFoundException(
+                        "Cannot find product with id ="+id));
     }
 
     @Override
-    public Page<ProductResponse> getAllProducts(PageRequest pageRequest) {
+    public Page<ProductResponse> getAllProducts(String keyword, Long categoryId, PageRequest pageRequest) {
         // Lấy danh sách sản phẩm theo trang(page) và giới hạn(limit)
-        // VD có 21 sản phẩm, mỗi trang có 3 sp(limit = 3) -> page = 7(0->6).
-        // Khi thực hiện câu lệnh findAll(pageRequest) thì sẽ lấy ra đc ds 3 sp theo số trang được chỉ định
-        // trong pageRequest.
-        return productRepository.findAll(pageRequest)
+        return productRepository
+                .searchProducts(keyword, categoryId, pageRequest)
                 .map(ProductResponse::convertToProductResponse);
     }
 
     @Override
     public Product updateProduct(long id, ProductDTO productDTO) throws DataNotFoundException {
-        Category category = categoryRepository.findById(productDTO.getCategoryId())
-                .orElseThrow(()-> new DataNotFoundException("Category not found"));
-        Product product = getProduct(id);
-        product.setName(productDTO.getName());
-        product.setPrice(productDTO.getPrice());
-        product.setThumbnail(productDTO.getThumbnail());
-        product.setMaterial(productDTO.getMaterial());
-        product.setCategory(category);
-        return productRepository.save(product);
+        Product existingProduct = getProduct(id);
+        if(existingProduct != null) {
+            //copy các thuộc tính từ DTO -> Product
+            //Có thể sử dụng ModelMapper
+            Category existingCategory = categoryRepository
+                    .findById(productDTO.getCategoryId())
+                    .orElseThrow(() ->
+                            new DataNotFoundException(
+                                    "Cannot find category with id: "+productDTO.getCategoryId()));
+            existingProduct.setName(productDTO.getName());
+            existingProduct.setCategory(existingCategory);
+            existingProduct.setPrice(productDTO.getPrice());
+            existingProduct.setDescription(productDTO.getDescription());
+            existingProduct.setThumbnail(productDTO.getThumbnail());
+            return productRepository.save(existingProduct);
+        }
+        return null;
     }
 
     @Override
@@ -80,18 +90,28 @@ public class ProductService implements IProductService{
     }
 
     @Override
+    public void updateThumbnail(long id, String thumbnailUrl) {
+        productRepository.updateThumbnail(id, thumbnailUrl);
+    }
+
+    @Override
     public ProductImage createProductImage(long productId, ProductImageDTO productImageDTO) throws DataNotFoundException, InvalidParamException {
-        Product existProduct = productRepository.findById(productId)
-                .orElseThrow(()->new DataNotFoundException("Cannot product with " + productId));
-        ProductImage existProductImage = ProductImage.builder()
-                .product(existProduct)
+        Product existingProduct = productRepository
+                .findById(productId)
+                .orElseThrow(() ->
+                        new DataNotFoundException(
+                                "Cannot find product with id: "+productImageDTO.getProductId()));
+        ProductImage newProductImage = ProductImage.builder()
+                .product(existingProduct)
                 .imageUrl(productImageDTO.getImageUrl())
                 .build();
-
+        //Ko cho insert quá 5 ảnh cho 1 sản phẩm
         int size = productImageRepository.findByProductId(productId).size();
-        if(size >= 5){
-            throw new InvalidParamException("Number of images must be < 5");
+        if(size >= ProductImage.MAXIMUM_IMAGES_PER_PRODUCT) {
+            throw new InvalidParamException(
+                    "Number of images must be <= "
+                            +ProductImage.MAXIMUM_IMAGES_PER_PRODUCT);
         }
-        return productImageRepository.save(existProductImage);
+        return productImageRepository.save(newProductImage);
     }
 }

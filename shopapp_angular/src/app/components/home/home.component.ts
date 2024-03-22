@@ -11,9 +11,10 @@ import { AppRoutingModule } from '../../app.routes';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FormsModule, NgIf, HeaderComponent, FooterComponent, SignInComponent, RegisterComponent, AppRoutingModule],
+  imports: [FormsModule, NgIf, HeaderComponent, FooterComponent, SignInComponent, RegisterComponent, RouterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
+  
 
 })
 export class HomeComponent{
